@@ -1,0 +1,13 @@
+version: "3.9"
+
+services:
+  benchmark:
+    build: .
+    container_name: benchmark_crypto
+    volumes:
+      - ./src/csv:/app/src/csv       # Persistir CSVs fora do container
+      - ./src/figures:/app/src/figures  # Persistir gráficos fora do container
+      - ./src/data:/app/src/data     # Acesso aos arquivos de teste
+    environment:
+      - PYTHONUNBUFFERED=1          # Log em tempo real
+    restart: "no"
